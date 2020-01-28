@@ -42,6 +42,15 @@ public class AlbumService {
         }
     }
 
+    public Album update(Album album) {
+        if (album.getId() == null) {
+            return create(album);
+        }
+        validateAlbum(album);
+
+        return albumRepository.save(album);
+    }
+
     public void delete(Long id) {
         albumRepository.deleteById(id);
     }

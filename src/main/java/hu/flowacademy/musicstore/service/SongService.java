@@ -48,6 +48,15 @@ public class SongService {
 
     }
 
+    public Song update(Song song) {
+        if (song.getId() == null) {
+            return create(song);
+        }
+        validateSong(song);
+
+        return songRepository.save(song);
+    }
+
     public void delete(Long id) {
         songRepository.deleteById(id);
     }

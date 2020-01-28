@@ -38,6 +38,15 @@ public class ArtistService {
         }
     }
 
+    public Artist update(Artist artist) {
+        if (artist.getId() == null) {
+            return create(artist);
+        }
+        validateArtist(artist);
+
+        return artistRepository.save(artist);
+    }
+
     public void delete(Long id) {
         artistRepository.deleteById(id);
     }
